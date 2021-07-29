@@ -216,8 +216,7 @@ checksum = "dd25036021b0de88a0aff6b850051563c6516d0bf53f8638938edbb9de732736"
 [[package]]
 name = "lambda_runtime"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f9b08856997d11ca8122121b26b17a27ef1dce689d71ccd754e051f2417aebdd"
+source = "git+https://github.com/awslabs/aws-lambda-rust-runtime.git?branch=master#7e2cd97b37436234c621dd6057ea99497ebd5c96"
 dependencies = [
  "async-stream",
  "bytes",
