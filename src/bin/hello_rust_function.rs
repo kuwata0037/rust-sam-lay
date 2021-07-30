@@ -1,14 +1,21 @@
-use lambda_runtime::{handler_fn, Context, Error};
-use serde_json::{json, Value};
+use lambda_http::{
+    handler,
+    lambda_runtime::{self, Context, Error},
+    IntoResponse, Request, RequestExt, Response,
+};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    let func = handler_fn(handler);
-    lambda_runtime::run(func).await?;
+    lambda_runtime::run(handler(func)).await?;
     Ok(())
 }
 
-async fn handler(event: Value, _: Context) -> Result<Value, Error> {
-    let first_name = event["firstName"].as_str().unwrap_or("world");
-    Ok(json!({ "message": format!("Hello, {}!", first_name) }))
+async fn func(event: Request, _: Context) -> Result<impl IntoResponse, Error> {
+    Ok(match event.query_string_parameters().get("first_name") {
+        Some(first_name) => format!("Hello, {}!", first_name).into_response(),
+        _ => Response::builder()
+            .status(400)
+            .body("Empty first name".into())
+            .expect("failed to render response"),
+    })
 }

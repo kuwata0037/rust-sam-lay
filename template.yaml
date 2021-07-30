@@ -1,13 +1,37 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template for sam-app
+
+Globals:
+  Function:
+    Timeout: 3
 
 Resources:
-  HelloRustFunction:
+  HelloWorldRustFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: HelloRust
+      CodeUri: .
       Handler: bootstrap.is.real.handler
       Runtime: provided.al2
-      CodeUri: .
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
     Metadata:
       BuildMethod: makefile
+
+Outputs:
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  HelloWorldFunction:
+    Description: "Hello World Rust Lambda Function ARN"
+    Value: !GetAtt HelloWorldRustFunction.Arn
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt HelloWorldRustFunction.Arn
