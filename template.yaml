@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  sam-app
+  rust-sam-lay
 
-  Sample SAM Template for sam-app
+  Sample SAM Template by rust
 
 Globals:
   Function:
