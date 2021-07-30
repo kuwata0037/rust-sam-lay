@@ -12,6 +12,8 @@ Globals:
 Resources:
   HelloWorldRustFunction:
     Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
     Properties:
       CodeUri: .
       Handler: bootstrap.is.real.handler
@@ -22,8 +24,6 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-    Metadata:
-      BuildMethod: makefile
 
 Outputs:
   HelloWorldApi:
