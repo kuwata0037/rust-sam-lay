@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-    foo:
+    develop:
         build: https://github.com/softprops/lambda-rust.git#e6137ddbac36d104236407eb537c6c03a16a30fa
         volumes:
             - ${PWD}:/code
