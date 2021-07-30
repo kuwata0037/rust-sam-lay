@@ -11,13 +11,11 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn func(event: Request, _: Context) -> Result<impl IntoResponse, Error> {
-    Ok(
-        match event.query_string_parameters().get("{{project-name}}") {
-            Some(project_name) => format!("Hello, {}!", project_name).into_response(),
-            _ => Response::builder()
-                .status(400)
-                .body("Empty project name".into())
-                .expect("failed to render response"),
-        },
-    )
+    Ok(match event.query_string_parameters().get("project_name") {
+        Some(project_name) => format!("Hello, {}!", project_name).into_response(),
+        _ => Response::builder()
+            .status(400)
+            .body("Empty project name".into())
+            .expect("failed to render response"),
+    })
 }
