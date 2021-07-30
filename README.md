@@ -18,7 +18,7 @@ Rust での Lambda 関数を用いた SAM ベースのサーバーレスアプ�
 cargo-generate を使用してプロジェクトを作成する。
 
 ```sh
-cargo generate --git
+cargo generate --git https://github.com/kuwata0037/rust-sam-lay.git
 ```
 
 ### 開発

@@ -8,8 +8,8 @@
     "foo": "bar"
   },
   "multiValueQueryStringParameters": {
-    "first_name": [
-      "Rust SAM Lay"
+    "project_name": [
+      "{{project-name}}"
     ]
   },
   "pathParameters": {
