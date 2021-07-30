@@ -1,5 +1,3 @@
-build: build-HelloRustFunction
-
 build-HelloRustFunction:
-	docker-compose run --rm -u `id -u`:`id -g` foo
-	cp ./target/lambda/release/output/rust-sam-lay/bootstrap $(ARTIFACTS_DIR)
+	docker-compose run --rm -u `id -u`:`id -g` -e BIN=hello_rust_function -e PACKAGE=false foo
+	cp ./target/lambda/release/output/hello_rust_function/bootstrap $(ARTIFACTS_DIR)
