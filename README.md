@@ -36,7 +36,6 @@ cargo generate --git https://github.com/kuwata0037/rust-sam-lay.git
 
 [template.yaml](./template.yaml) に Lambda 関数のリソース名をキャメルケースで命名する。そして [src/bin](./src/bin) に Lambda 関数用の Rust ファイルを、そのリソース名のスネークケースで命名する。
 
-
 #### ビルド
 
 SAM CLI の build コマンドを経由で、[lambda-rust](https://github.com/softprops/lambda-rust) の Docker コンテナ上でビルドを行う。
